@@ -4,3 +4,29 @@ title = "CS 184 Final Project"
 theme = "hugo-whisper-theme"
 relativeurl = true
 canonifyURLs = false
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Project"
+    url = "/project/"
+    weight = 2
+
+[params]
+  google_analytics_id=""
+  homepage_button_link = '/project'
+  homeoage_button_text = 'Project Details'
+  homepage_intro = 'Quetzalli Calderon | Minos Park | Amir Shahatit'
+  homepage_image = '/images/terminal.gif'
+
+  [params.homepage_meta_tags]
+    meta_og_title = "CS 184 Spring 2019 - WrayIFI"
+    meta_og_type = "website"
+    meta_og_description = "Spring 2019 - Quetzalli Calderon | Minos Park | Amir Shahatit - UC Berkeley"
