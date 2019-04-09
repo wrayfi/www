@@ -1,0 +1,6 @@
+baseURL = ""
+languageCode = "en-us"
+title = "CS 184 Final Project"
+theme = "hugo-whisper-theme"
+relativeurl = true
+canonifyURLs = false
