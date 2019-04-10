@@ -4,12 +4,9 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 before_script:
-  - apt-get update
-  - apt-get --yes install golang-go
-  - git clone https://github.com/gohugoio/hugo.git
-  - cd hugo
-  - go install --tags extended
-  - cd ..
+  - curl https://github.com/gohugoio/hugo/releases/download/v0.55.0/hugo_extended_0.55.0_Linux-64bit.tar.gz > go.tar.gz
+  - tar -zxvf go.tar.gz
+  - ls
 
 test:
   script:
