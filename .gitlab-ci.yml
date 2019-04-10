@@ -4,8 +4,8 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 before_script:
-  - apt update
-  - apt --yes --force-yes install npm
+  - apt-get update
+  - apt-get --yes --force-yes install nodejs
   - npm install --silent -g postcss-cli
 
 test:
