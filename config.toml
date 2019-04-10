@@ -1,6 +1,6 @@
 baseURL = ""
 languageCode = "en-us"
-title = "CS 184 Final Project"
+title = "WrayFi"
 theme = "hugo-whisper-theme"
 relativeurl = true
 canonifyURLs = false
@@ -10,7 +10,7 @@ pygmentsCodefencesGuessSyntax = true
 pygmentsUseClasses = true
 
 [[menu.main]]
-    name = "Home"
+    name = "WrayFi"
     url = "/"
     weight = 1
 
@@ -23,8 +23,8 @@ pygmentsUseClasses = true
   google_analytics_id=""
   homepage_button_link = '/project'
   homeoage_button_text = 'Project Details'
-  homepage_intro = 'Quetzalli Calderon | Minos Park | Amir Shahatit'
-  homepage_image = '/images/terminal.gif'
+  homepage_intro = "Quetzalli Calderon | Minos Park | Amir Shahatit"
+  homepage_image = '/images/router.jpg'
 
   [params.homepage_meta_tags]
     meta_og_title = "CS 184 Spring 2019 - WrayIFI"

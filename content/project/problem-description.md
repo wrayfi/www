@@ -1,6 +1,6 @@
 ---
 title: "Problem Description"
-date: 2019-04-09T16:55:20-07:00
+date: 2019-04-09T00:00:05-07:00
 draft: false
 ---
 ### Problem we want to solve: We are answering the question why fi sucks? By creating a heat map of your wifi, you can test different router placements and find one that optimizes your connectivity.
