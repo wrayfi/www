@@ -5,8 +5,8 @@ variables:
 
 before_script:
   - uname -a
-  - apt update
-  - apt --yes --force-yes install npm
+  - sudo apt update
+  - sudo apt --yes --force-yes install npm
   - npm install --silent -g postcss-cli
 
 test:
