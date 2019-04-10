@@ -4,11 +4,12 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 before_script:
-  - uname -a
   - apt-get update
-  - apt-get --yes --force-yes install nodejs
-  - apt-get --yes install npm
-  - npm install --silent -g postcss-cli
+  - apt-get install golang-go
+  - git clone https://github.com/gohugoio/hugo.git
+  - cd hugo
+  - go install --tag extended
+  - cd ..
 
 test:
   script:
