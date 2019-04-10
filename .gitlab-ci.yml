@@ -7,7 +7,7 @@ before_script:
   - uname -a
   - apt-get update
   - apt-get --yes --force-yes install nodejs
-  - curl -L https://npmjs.org/install.sh | sudo sh
+  - apt-get --yes install npm
   - npm install --silent -g postcss-cli
 
 test:
