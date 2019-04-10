@@ -1,12 +1,11 @@
-image: registry.gitlab.com/pages/hugo:0.54.0
+image: monachus/hugo
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 before_script:
-  - uname -a
-  - sudo apt update
-  - sudo apt --yes --force-yes install npm
+  - apt update
+  - apt --yes --force-yes install npm
   - npm install --silent -g postcss-cli
 
 test:
