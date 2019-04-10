@@ -5,7 +5,7 @@ variables:
 
 before_script:
   - apt-get update
-  - apt-get install golang-go
+  - apt-get --yes install golang-go
   - git clone https://github.com/gohugoio/hugo.git
   - cd hugo
   - go install --tag extended
