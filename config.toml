@@ -1,4 +1,4 @@
-baseURL = ""
+baseURL = "/www/"
 languageCode = "en-us"
 title = "WrayFi"
 theme = "hugo-whisper-theme"
