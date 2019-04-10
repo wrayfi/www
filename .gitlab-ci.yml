@@ -5,7 +5,7 @@ variables:
 
 before_script:
   - apt-get update
-  - apt-get --yes --force-yes install nodejs
+  - apt-get --yes --force-yes install nodejs npm
   - npm install --silent -g postcss-cli
 
 test:
