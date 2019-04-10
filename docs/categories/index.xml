@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on WrayFi</title>
-    <link>/www/categories/</link>
+    <link>wrayfi.github.io/www/categories/</link>
     <description>Recent content in Categories on WrayFi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/www/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="wrayfi.github.io/www/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
