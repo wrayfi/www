@@ -1,4 +1,4 @@
-baseURL = "wrayfi.github.io/www/"
+baseURL = "https://wrayfi.github.io/www/"
 languageCode = "en-us"
 title = "WrayFi"
 theme = "hugo-whisper-theme"
