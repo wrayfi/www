@@ -3,6 +3,11 @@ image: registry.gitlab.com/pages/hugo:0.54.0
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
+before_script:
+  - apt-get update
+  - apt-get --yes --force-yes install npm
+  - npm install --silent -g postcss-cli
+
 test:
   script:
   - hugo
