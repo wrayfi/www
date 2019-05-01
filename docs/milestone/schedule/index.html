@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Goals and Deliverables - WrayFi</title>
+  <title>Schedule - WrayFi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="icon" href="https://wrayfi.github.io/www/favicon.png">
@@ -100,23 +100,19 @@
           <div class="sidebar">
             
 <div class="docs-menu">
-  <h4>Project</h4>
+  <h4>Milestone</h4>
   <ul>
     
     <li class="">
-      <a href="https://wrayfi.github.io/www/project/problem-description/">Problem Description</a>
+      <a href="https://wrayfi.github.io/www/milestone/challenges/">Challenges</a>
+    </li>
+    
+    <li class="">
+      <a href="https://wrayfi.github.io/www/milestone/goals-and-deliverables/">Goals and Deliverables</a>
     </li>
     
     <li class="active ">
-      <a href="https://wrayfi.github.io/www/project/goals-and-deliverables/">Goals and Deliverables</a>
-    </li>
-    
-    <li class="">
-      <a href="https://wrayfi.github.io/www/project/schedule/">Schedule</a>
-    </li>
-    
-    <li class="">
-      <a href="https://wrayfi.github.io/www/project/resources/">Resources</a>
+      <a href="https://wrayfi.github.io/www/milestone/schedule/">Schedule</a>
     </li>
     
   </ul>
@@ -125,49 +121,49 @@
         </div>
         <div class="col-12 col-md-9">
           
-<h1 class="title">Goals and Deliverables</h1>
+<h1 class="title">Schedule</h1>
 <div class="content">
   
 
-<h2 id="plan-to-deliver">Plan to deliver:</h2>
+<p>In this section you should organize and plan the tasks and subtasks that your team will execute. Since presentations are ~4 weeks from the due-date of the proposal, you should include a set of tasks for every week.</p>
+
+<h3 id="week1">Week1</h3>
+
+<p>Make key design decisions
+* Research/compare radiosity, widening camera field of view in terms of extensiveness of changes required for proj 3-2 as well as the quality of the heat map produced with each.
+    * We are currently weighing how to get the wifi reception at each point, between two main contenders
+        * Radiosity, a way of computing the global state of the image so we could pan around our heat map
+        * Widening the camera’s field of view so it is essentially shooting out rays 360 degrees.
+    * Research/compare development cost of simulating the router as the light source versus the router as the camera.
+* Research waves to understand/model phases/interference
+* Research material modeling and how to modify material qualities in proj 3-2</p>
+
+<h3 id="week-2">Week 2</h3>
+
+<p>Implement a test scene and bounce some signals through them
+* Implement the widened field of view or radiosity for some basic project 3-2 scene
+* Add phases to the proj3-2 rays
+* Start creating/ finding scenes to use
+* Implemente interactive features
+* Crude version of 2d heatmap with one router and at least one object blocking signal, using ray tracing</p>
+
+<h3 id="week-3">Week 3</h3>
 
 <ul>
-<li>Create a basic 2d heatmap showing wifi distribution from a birds eye view. Essentially a non-interactive version of the project here.</li>
-<li>How to measure the quality / performance of the system
-
-<ul>
-<li>Measure scene based on real world router locations and test wifi signals against simulated data.</li>
-</ul></li>
-<li>What questions do you plan to answer with your analysis?
-
-<ul>
-<li>How do signals interact/interfere  when there are multiple routers?<br /></li>
-<li>Assuming a single material for the simulation, how to simulate the signal propagation in a model room?</li>
-<li>What is the optimal location for the router?</li>
-</ul></li>
+<li>Create a scheme for converting wifi values at points to a heat map</li>
+<li>Create a basic scene with a couple of different materials</li>
+<li>Show some basic interference result</li>
+<li>Have the ability to see the signals at different locations complete by end of this week</li>
+<li>Work to expand towards having N routers</li>
+<li>Have slides and video done for the milestone</li>
 </ul>
 
-<h2 id="hope-to-deliver">Hope to deliver:</h2>
+<h3 id="week-4">Week 4</h3>
 
 <ul>
-<li>Create an interactive panable 3d heat map of the scene showing interesting interference effects from rays bouncing off walls
-
-<ul>
-<li>Extremely ambitious: Walk around a room in VR and query wifi speeds at different locations by pointing at it, essentially a speedtest button that someone could then test out by pulling out a device and running the speed test from there.</li>
-</ul></li>
-<li>How to measure the quality / performance of the system
-
-<ul>
-<li>Measure scene based on real world router locations and test wifi signals against simulated data and different building materials.</li>
-</ul></li>
-<li>What questions do you plan to answer with your analysis?
-
-<ul>
-<li>How do signals interact with surrounding material and how to simulate the materials in our technology stack?</li>
-<li>How to measure the materials RF interaction properties?</li>
-<li>How does incorporating the different material affect the signal propagation?</li>
-<li>What materials block the wifi the most/least?</li>
-</ul></li>
+<li>Make sure we can expand implementation to different scenes</li>
+<li>Have sanity check of everything created so far</li>
+<li>Expand from 2d to 3d heat map</li>
 </ul>
 
 </div>
