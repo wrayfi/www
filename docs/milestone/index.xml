@@ -17,7 +17,7 @@
       <pubDate>Tue, 30 Apr 2019 22:39:17 -0700</pubDate>
       
       <guid>https://wrayfi.github.io/www/milestone/challenges/</guid>
-      <description></description>
+      <description>Challenges:  Initially, we aimed to model the router as the camera. However, the case of multiple routers was not well suited to this model. Instead we decided to have one camera above the scene looking down in a birds eye view. We place the devices around the scene and have the wifi router be the light source. We also pivoted from having a heat map of wifi signals as the final product to a prescription of where you should place your wifi routers based on the hot spots:) in your room, in terms of wifi usage.</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 30 Apr 2019 00:00:03 -0700</pubDate>
       
       <guid>https://wrayfi.github.io/www/milestone/goals-and-deliverables/</guid>
-      <description>Plan to deliver:  Create a basic 2d heatmap showing wifi distribution from a birds eye view. Essentially a non-interactive version of the project here. How to measure the quality / performance of the system  Measure scene based on real world router locations and test wifi signals against simulated data.  What questions do you plan to answer with your analysis?  How do signals interact/interfere when there are multiple routers?</description>
+      <description>What we have accomplished:  We added an element of energy drop-off to the project3-2 raytracer to model radio waves instead of light rays. The drop-off both as a function of time and of the materials the ray has passed through Created a test scene with some new material modeling.  The three materials we chose to model are  glass(a material that lets rays through some of the time) , mirror (which in the case of wifi, is most similar to aluminum, reflecting rays most of the time), and concrete(a material that largely absorbs wifi rays)).</description>
     </item>
     
     <item>
@@ -35,8 +35,8 @@
       <pubDate>Tue, 30 Apr 2019 00:00:02 -0700</pubDate>
       
       <guid>https://wrayfi.github.io/www/milestone/schedule/</guid>
-      <description>In this section you should organize and plan the tasks and subtasks that your team will execute. Since presentations are ~4 weeks from the due-date of the proposal, you should include a set of tasks for every week.
-Week1 Make key design decisions * Research/compare radiosity, widening camera field of view in terms of extensiveness of changes required for proj 3-2 as well as the quality of the heat map produced with each.</description>
+      <description>Updated work plan: This week:  Go to office hours to really understand the light model and what needs to be tweaked  Implement modifications to ray that model it more as a radio wave than a light wave  Create a scene with the “cellphones” on the highly used regions of the room. Show their brightness changes relative to where the wifi router is placed
+Endgame: Get light sources to move around the edge of the room</description>
     </item>
     
     <item>

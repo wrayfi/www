@@ -133,45 +133,24 @@
 <div class="content">
   
 
-<h2 id="plan-to-deliver">Plan to deliver:</h2>
+<h2 id="what-we-have-accomplished">What we have accomplished:</h2>
 
 <ul>
-<li>Create a basic 2d heatmap showing wifi distribution from a birds eye view. Essentially a non-interactive version of the project here.</li>
-<li>How to measure the quality / performance of the system
+<li>We added an element of energy drop-off to the project3-2 raytracer to model radio waves instead of light rays. The drop-off both as a function of time and of the materials the ray has passed through</li>
+<li>Created a test scene with some new material modeling.
 
 <ul>
-<li>Measure scene based on real world router locations and test wifi signals against simulated data.</li>
+<li>The three materials we chose to model are
+
+<ul>
+<li>glass(a material that lets rays through some of the time) ,</li>
+<li>mirror (which in the case of wifi, is most similar to aluminum, reflecting rays most of the time),</li>
+<li>and concrete(a material that largely absorbs wifi rays)).</li>
+<li>These are linearly independent in a sense and represent the span of materials with respect to wifi absorption/reflectance.</li>
 </ul></li>
-<li>What questions do you plan to answer with your analysis?
-
-<ul>
-<li>How do signals interact/interfere  when there are multiple routers?<br /></li>
-<li>Assuming a single material for the simulation, how to simulate the signal propagation in a model room?</li>
-<li>What is the optimal location for the router?</li>
 </ul></li>
-</ul>
-
-<h2 id="hope-to-deliver">Hope to deliver:</h2>
-
-<ul>
-<li>Create an interactive panable 3d heat map of the scene showing interesting interference effects from rays bouncing off walls
-
-<ul>
-<li>Extremely ambitious: Walk around a room in VR and query wifi speeds at different locations by pointing at it, essentially a speedtest button that someone could then test out by pulling out a device and running the speed test from there.</li>
-</ul></li>
-<li>How to measure the quality / performance of the system
-
-<ul>
-<li>Measure scene based on real world router locations and test wifi signals against simulated data and different building materials.</li>
-</ul></li>
-<li>What questions do you plan to answer with your analysis?
-
-<ul>
-<li>How do signals interact with surrounding material and how to simulate the materials in our technology stack?</li>
-<li>How to measure the materials RF interaction properties?</li>
-<li>How does incorporating the different material affect the signal propagation?</li>
-<li>What materials block the wifi the most/least?</li>
-</ul></li>
+<li>As you can see in this picture, the top wall is modeling reflectance, the right wall is modeling absorption, and the left is modeling rays passing through.
+<img src="demo.png" alt="" /></li>
 </ul>
 
 </div>
