@@ -19,12 +19,21 @@ pygmentsUseClasses = true
     url = "/project/"
     weight = 2
 
+[[menu.main]]
+    name = "Milestone"
+    url = "/milestone/"
+    weight = 3
+
 [params]
   google_analytics_id=""
-  homepage_button_link = '/project'
+  homepage_button_link = '/project/'
   homeoage_button_text = 'Project Details'
+  homepage_button_link2 = '/milestone/'
+  homeoage_button_text2 = 'Milestone'
   homepage_intro = "Quetzalli Calderon | Minos Park | Amir Shahatit"
   homepage_image = '/images/router.jpg'
+
+  mainSections = ['project', 'milestone']
 
   [params.homepage_meta_tags]
     meta_og_title = "CS 184 Spring 2019 - WrayIFI"
