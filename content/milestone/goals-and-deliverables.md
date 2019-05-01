@@ -12,4 +12,5 @@ draft: false
          * and concrete(a material that largely absorbs wifi rays)).
      * These are linearly independent in a sense and represent the span of materials with respect to wifi absorption/reflectance.
 * As you can see in this picture, the top wall is modeling reflectance, the right wall is modeling absorption, and the left is modeling rays passing through.
-![](demo.png)
+![Demo picture](../demo.png)
+![Demo picture2](../demo2.png)
