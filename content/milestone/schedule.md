@@ -1,6 +1,6 @@
 ---
 title: "Schedule"
-date: 2019-04-09T00:00:02-07:00
+date: 2019-04-30T00:00:02-07:00
 draft: false
 ---
 In this section you should organize and plan the tasks and subtasks that your team will execute. Since presentations are ~4 weeks from the due-date of the proposal, you should include a set of tasks for every week.
