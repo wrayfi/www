@@ -8,7 +8,7 @@ draft: false
 
 ## Abstract
 
-We modeled radio frequency (RF) rays interacting with realistic materials so users can find the router placement that maximizes WiFi connection at the points where they use it most.  We started by modeling the space where a user would want to compute their wifi. We created a realistic office scene, complete with a couple rooms, desks, wifi-connected devices, and routers. To model RF ray tracing, we began with project 3-2 as a foundation. We decided to introduce two new abstractions to the project, a router and a hotspot. We implemented the router abstraction as a literal router object specified in the blender scene. It shoots RF rays into the scene uniformly at random in the sphere encompassing the router. We implemented hotspots as spheres centered around the device you place in the blender scene. When a ray from the router intersects with one of these special spheres, we record the phase and brightness. Once all the rays have been traced, for each hotspot, we aggregate all the rays which intersected by representing their contribution as `sine(phase) * brightness`. To create a more compelling graphic, we then render the scene from a birds eye view shooting rays from the camera like we did in 3-2 and overlay our computed wifi signal values onto the hotspots.
+We modeled radio frequency (RF) rays interacting with realistic materials so users can find the router placement that maximizes WiFi connection at the points where they use it most. We created a realistic office scene, complete with a couple rooms, desks, wifi-connected devices, and routers. We took project 3-2 as a foundation and introduced two new abstractions: router and hotspot. We made the router shoot RF rays into the scene uniformly at random. Hotspots are spheres centered around the device. When a ray from the router intersects with a hotspot, we record the phase and brightness. Once all the rays have been traced, we aggregate all the rays which intersected with each hotspot as `sine(phase) * brightness`. Then we render the scene from a birds eye view and overlay our computed wifi signal values onto the hotspots.
 
 ## Technical approach
 ### Pipeline
@@ -17,32 +17,13 @@ We modeled radio frequency (RF) rays interacting with realistic materials so use
 
 ### Scene modeling (Real life -> .dae)
 
-The `.dae` files we created in blender contained objects that pathtracer couldn’t read. After significant trial and error, we found that pathtracer relied heavily on simple objects such as planes and spheres and offered little support for other objects. We attempted to use materials that were commonly found in everyday life and that had different interaction with WiFi signals. After experimenting with different materials, we decided on glass, mirror, and concrete. We then imported compatible .dae files to fill the space. After we generated the .dae file, we manually changed variable names and imported material/ effects that were compatible with the XML parser.
-
-#### Summary
-
-We manually edited the .dae file exported from blender to fit the XML parser from pathtracer. We added custom objects, materials and their effects on the scene.
+The `.dae` files we created in blender contained objects that pathtracer couldn’t read. We found that pathtracer relied heavily on simple objects such as planes and spheres, offering little support for anything else. After experimenting with different materials, we decided to use glass, mirror, and concrete. We then imported compatible .dae files to fill the space. Then, we manually changed variable names and imported material/ effects that were compatible with the XML parser.
 
 ### Parsing (.dae -> raytracer)
 
 We changed the collada parser in the project 3 to read in our special router and hotspot objects.
 
 ### Computing Wifi values
-
-#### Decisions
-
-* We had two major decisions to make to compute wifi values.
-    * How to model routers, devices, and rays
-        * Our initial approach was to create a heat map. For this, we landed on the approach of a birds eye view of the scene, routers as light sources, and devices weren’t necessary as you would see the wifi everywhere in the scene. One major drawback to this approach was the increase in complexity of figuring out ray interference and the fact that our image was limited to wifi rays that managed to intersect with our floating birds eye camera.
-        * We opted for a more realistic, and doable approach of computing wifi signal at the location of devices in your scene.
-            * Unfortunately, no meaningful picture is generated.
-            * But, we could compute interference by aggregating all the rays that intersect with our devices.
-            * This also captured every router ray that intersected with a hotspot.
-    * What should go into calculating wifi signal and how to aggregate them.
-        * We initially wanted to just include brightness.
-            * Every render would produce a heatmap where the brighter points in the picture correspond to better reception.
-        * We ultimately opted for brightness and phase.
-            * This allowed us to capture interference effects where waves can amplify or cancel each other out.
 
 #### Problems
 
@@ -55,12 +36,26 @@ We ran into two significant challenges in our implementation.
 With the router and hotspot objects loaded in from the `.dae`, all we had left was to trace the rays. We generated rays, uniformly at random in the sphere encompassing the router. We modified the BSDFs of each material to scale the rays brightness down by some factor we decided upon after researching the way RF rays interact with that material. In order to measure the reception, we kept track of how many rays intersect each hotspot by storing the state of the wave at a point in time (the phase, which is `time%frequency`(either `2.4 GHZ`or `5 GHZ`), and the amplitude (brightness)). We placed light sources under each router so we could use the brightness of the ray as a heuristic for the amplitude of the RF wave. After all the rays are generated, we go through each hotspot and combine these sinusoids using a weighted sum of the rays
  `sin(phase) * amplitude`. With this equation we were able to mimic phase interference and obtain our final value representing the total wifi signal at that hotspot.
 
+### Decisions
+We had two major decisions to make to compute wifi values.
+ 1. How to model routers, devices, and rays
+
+Initially, we wanted to create a heat map. We decided to render a birds eye view of the scene, with routers as light sources. One major drawback to this approach was the increase in complexity of figuring out ray interference and the fact that our image was limited to wifi rays that managed to intersect with our floating birds eye camera.
+
+
+ We opted for a more realistic, and doable approach where we compute wifi signal at the hotspots. Unfortunately, no meaningful picture is generated. But, we could compute interference by aggregating all the rays that intersect with our devices. This also captured every router ray that intersected with a hotspot.
+ 2. What should go into calculating wifi signal and how to aggregate them.
+
+We initially wanted to just include brightness. Every render would produce a heatmap where the brighter points in the picture correspond to better reception.
+
+We ultimately opted for brightness and phase. This allowed us to capture interference effects where waves can amplify or cancel each other out.
+
 ### Lessons
 `Amir` relearned sinusoidal math, the purpose of const in C++, and gained a much deeper understanding of the Project 3 codebase and ray tracing. He also enhanced his project management skills, coordinating different talents, and organizing the logistics of scheduling meetings with 3 busy college students.
 
 `Quetza`
 
-I learned how to use blender and how to read/parse dae files. With the information I gained I was able to create new libraries and modify existing code.  I also researched how WiFi signals interacted with different material such as metal which repels WiFi rays. From what I found, I was able to adjust/change the properties of the walls to get a more realistic setting. 
+I learned how to use blender and how to read/parse dae files. With the information I gained I was able to create new libraries and modify existing code.  I also researched how WiFi signals interacted with different material such as metal which repels WiFi rays. From what I found, I was able to adjust/change the properties of the walls to get a more realistic setting.
 
 `Minos`
 
