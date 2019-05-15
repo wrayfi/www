@@ -60,7 +60,7 @@ With the router and hotspot objects loaded in from the `.dae`, all we had left w
 
 `Quetza`
 
-When creating and working in blender, it was really cool being able to have a deeper understanding of how the phong, ambient, specular, and emission all interacted after learning about them in project 4.
+I learned how to use blender and how to read/parse dae files. With the information I gained I was able to create new libraries and modify existing code.  I also researched how WiFi signals interacted with different material such as metal which repels WiFi rays. From what I found, I was able to adjust/change the properties of the walls to get a more realistic setting. 
 
 `Minos`
 
