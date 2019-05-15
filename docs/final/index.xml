@@ -18,7 +18,7 @@
       
       <guid>https://wrayfi.github.io/www/final/report/</guid>
       <description>Video
-Abstract We modeled radio frequency (RF) rays interacting with realistic materials so users can find the router placement that maximizes WiFi connection at the points where they use it most. We started by modeling the space where a user would want to compute their wifi. We created a realistic office scene, complete with a couple rooms, desks, wifi-connected devices, and routers. To model RF ray tracing, we began with project 3-2 as a foundation.</description>
+Abstract We modeled radio frequency (RF) rays interacting with realistic materials so users can find the router placement that maximizes WiFi connection at the points where they use it most. We created a realistic office scene, complete with a couple rooms, desks, wifi-connected devices, and routers. We took project 3-2 as a foundation and introduced two new abstractions: router and hotspot. We made the router shoot RF rays into the scene uniformly at random.</description>
     </item>
     
   </channel>
