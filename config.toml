@@ -26,7 +26,7 @@ pygmentsUseClasses = true
 
 [[menu.main]]
     name = "Final"
-    url = "/final/"
+    url = "/final/report"
     weight = 4
 
 [params]
@@ -35,8 +35,8 @@ pygmentsUseClasses = true
   homeoage_button_text = 'Project Details'
   homepage_button_link2 = '/milestone/'
   homeoage_button_text2 = 'Milestone'
-  homepage_button_link3 = '/final/'
-  homeoage_button_text3 = 'Final'
+  homepage_button_link3 = '/final/report'
+  homeoage_button_text3 = 'Final Report'
   homepage_intro = "Quetzalli Calderon | Minos Park | Amir Shahatit"
   homepage_image = '/images/router.jpg'
 
