@@ -4,7 +4,7 @@ date: 2019-04-30T22:39:17-07:00
 draft: false
 ---
 
-[Video](/www/images/cs184-wrayfi.mp4)
+[Video](/www/movie/cs184-wrayfi.mp4)
 
 ## Abstract
 
