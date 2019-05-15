@@ -35,10 +35,12 @@ pygmentsUseClasses = true
   homeoage_button_text = 'Project Details'
   homepage_button_link2 = '/milestone/'
   homeoage_button_text2 = 'Milestone'
+  homepage_button_link3 = '/final/'
+  homeoage_button_text3 = 'Final'
   homepage_intro = "Quetzalli Calderon | Minos Park | Amir Shahatit"
   homepage_image = '/images/router.jpg'
 
-  mainSections = ['project', 'milestone']
+  mainSections = ['project', 'milestone', 'final']
 
   [params.homepage_meta_tags]
     meta_og_title = "CS 184 Spring 2019 - WrayIFI"
