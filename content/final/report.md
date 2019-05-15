@@ -25,17 +25,14 @@ To build a Collada scene from `.dae` in RfTracer, we changed the collada parser 
 
 #### Problems
 
-We ran into two significant challenges in our implementation: refactoring and const.
-
-# Minos: Might want to add here
+We ran into two significant challenges in our implementation: refactoring and feature addition to a complex project.
 
 We opted to use the staff binary for 3-2 so when we needed to modify components of 3-1 to model RF, we had to start by integrating our 3-1 code in with our 3-2 code.
 
-Const is all over the place in the 3-2 raytracer. This made it very difficult to figure out where to record the phase and brightness values for rays without refactoring major parts of 3-2. This ended up being a frustrating, yet interesting design problem.
+Feature addition to a already complex project is not an easy task. We experienced multiple slowdowns due to not having a good grasp of how the whole of the project comes together. This could have been remedied by spending a good amount of time understanding the codebase before starting to implement different parts of the feature. Another thing that would have helped greatly would be having a better documentation on the high level overview of CS 184 pathtracer engine.
 
 #### Summary
 
-# Minos: is this below accurate?
 We generated rays, uniformly at random in the sphere encompassing the router. We modified the BSDFs of each material to scale the rays brightness down by some factor that we decided upon after researching the way RF rays interact with that material. We kept track of how many rays intersect each hotspot, storing the state of the wave ( phase, which is
  `time%frequency`(either `2.4 GHZ`or `5 GHZ`), and amplitude (brightness)).
 We placed light sources under each router so we could use the brightness of the ray as a heuristic for the amplitude of the RF wave. Then we combine these sinusoids using a weighted sum of the rays
@@ -61,7 +58,7 @@ We had two major decisions to make to compute wifi values.
 
 `Quetza` I learned how to use blender and how to read/parse dae files. With the information I gained I was able to create new libraries and modify existing code.  I also researched how WiFi signals interacted with different material such as metal which repels WiFi rays. From what I found, I was able to adjust/change the properties of the walls to get a more realistic setting.
 
-`Minos`
+`Minos` As mentioned in the problem section, working on adding a feature to a project with a sparse documentation on high level overview was quite challenging. I learned to spend even more time learning the codebase before attempting to write parts of the feature. Understanding collada file format was an interesting experience, and I learned that CS184 PathTracer engine can be expanded more to be able to render materials/objects that are out there in the wild.
 
 ### Results
 ![DiffuseLeftRouter](../img/SphereHotSpot_DiffuseLeftRouter_screenshot_5-13_23-3-24.png)
