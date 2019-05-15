@@ -38,7 +38,7 @@ pygmentsUseClasses = true
   homepage_button_link3 = '/final/report'
   homeoage_button_text3 = 'Final Report'
   homepage_intro = "Quetzalli Calderon | Minos Park | Amir Shahatit"
-  homepage_image = '/images/router.jpg'
+  homepage_image = '/images/main.png'
 
   mainSections = ['project', 'milestone', 'final']
 
