@@ -131,7 +131,7 @@
 <div class="content">
   
 
-<p><a href="https://youtu.be/TxUFy5annY4">Video</a></p>
+<p><a href="/www/images/cs184-wrayfi.mp4">Video</a></p>
 
 <h2 id="abstract">Abstract</h2>
 
@@ -143,11 +143,11 @@
 
 <p><img src="../img/pipeline.png" alt="Pipeline" /></p>
 
-<h3 id="scene-modeling-and-parsing-real-life-c">Scene modeling and parsing (Real life -&gt; c++)</h3>
+<h3 id="scene-modeling-and-parsing-real-life-rftracer-engine">Scene modeling and parsing (Real life -&gt; RfTracer Engine)</h3>
 
-<p>The <code>.dae</code> files we created in blender contained objects that pathtracer couldn’t read. We found that pathtracer relied heavily on simple objects such as planes and spheres, offering little support for anything else. After experimenting with different materials, we decided to use glass, mirror, and concrete. We then imported compatible .dae files to fill the space. Then, we manually changed variable names and imported material/ effects that were compatible with the XML parser.</p>
+<p>The <code>.dae</code> collada files we created in blender contained objects that pathtracer couldn’t read. We found that pathtracer relied heavily on simple objects such as planes and spheres, offering little support for anything else. After experimenting with different materials, we decided to use glass, mirror, and concrete. We then imported compatible .dae files to fill the space. Then, we manually changed variable names and imported material/ effects that were compatible with the XML parser.</p>
 
-<p>To go from the <code>dae</code> to c++, we changed the collada parser in the project 3 to read in our special router and hotspot objects.</p>
+<p>To build a Collada scene from <code>.dae</code> in RfTracer, we changed the collada parser in the project 3 to read in our special router and hotspot objects.</p>
 
 <h3 id="computing-wifi-values">Computing Wifi values</h3>
 
@@ -155,36 +155,44 @@
 
 <p>We ran into two significant challenges in our implementation: refactoring and const.</p>
 
-<p>We opted to use the staff binary for 3-2 so we needed to modify components of 3-1 to model RF, we had to start by integrating our 3-1 code in with our 3-2 code.</p>
+<h1 id="minos-might-want-to-add-here">Minos: Might want to add here</h1>
+
+<p>We opted to use the staff binary for 3-2 so when we needed to modify components of 3-1 to model RF, we had to start by integrating our 3-1 code in with our 3-2 code.</p>
 
 <p>Const is all over the place in the 3-2 raytracer. This made it very difficult to figure out where to record the phase and brightness values for rays without refactoring major parts of 3-2. This ended up being a frustrating, yet interesting design problem.</p>
 
 <h4 id="summary">Summary</h4>
 
-<p>We generated rays, uniformly at random in the sphere encompassing the router. We modified the BSDFs of each material to scale the rays brightness down by some factor that we decided upon after researching the way RF rays interact with that material. We kept track of how many rays intersect each hotspot, storing the state of the wave ( phase, which is <code>time%frequency</code>(either <code>2.4 GHZ</code>or <code>5 GHZ</code>), and amplitude (brightness)). We placed light sources under each router so we could use the brightness of the ray as a heuristic for the amplitude of the RF wave. Then we combine these sinusoids using a weighted sum of the rays
+<h1 id="minos-is-this-below-accurate">Minos: is this below accurate?</h1>
+
+<p>We generated rays, uniformly at random in the sphere encompassing the router. We modified the BSDFs of each material to scale the rays brightness down by some factor that we decided upon after researching the way RF rays interact with that material. We kept track of how many rays intersect each hotspot, storing the state of the wave ( phase, which is
+ <code>time%frequency</code>(either <code>2.4 GHZ</code>or <code>5 GHZ</code>), and amplitude (brightness)).
+We placed light sources under each router so we could use the brightness of the ray as a heuristic for the amplitude of the RF wave. Then we combine these sinusoids using a weighted sum of the rays
  <code>sin(phase) * amplitude</code>. With this equation we were able to mimic phase interference and obtain our final value representing the total wifi signal at that hotspot.</p>
 
 <h3 id="decisions">Decisions</h3>
 
-<p>We had two major decisions to make to compute wifi values.
- 1. How to model routers, devices, and rays</p>
+<p>We had two major decisions to make to compute wifi values.</p>
+
+<ol>
+<li><p>How to model routers, devices, and rays</p>
 
 <p>Initially, we wanted to create a heat map. We decided to render a birds eye view of the scene, with routers as light sources. One major drawback to this approach was the increase in complexity of figuring out ray interference and the fact that our image was limited to wifi rays that managed to intersect with our floating birds eye camera.</p>
 
-<p>We opted for a more realistic, and doable approach where we compute wifi signal at the hotspots. Unfortunately, no meaningful picture is generated. But, we could compute interference by aggregating all the rays that intersect with our devices. This also captured every router ray that intersected with a hotspot.
- 2. What should go into calculating wifi signal and how to aggregate them.</p>
+<p>We opted for a more realistic, and doable approach where we compute wifi signal at the hotspots. Unfortunately, no meaningful picture is generated. But, we could compute interference by aggregating all the rays that intersect with our devices. This also captured every router ray that intersected with a hotspot.</p></li>
+
+<li><p>What should go into calculating wifi signal and how to aggregate them.</p>
 
 <p>We initially wanted to just include brightness. Every render would produce a heat map where the brighter points in the picture correspond to better reception.</p>
 
-<p>We ultimately opted for brightness and phase. This allowed us to capture interference effects where waves can amplify or cancel each other out.</p>
+<p>We ultimately opted for brightness and phase. This allowed us to capture interference effects where waves can amplify or cancel each other out.</p></li>
+</ol>
 
 <h3 id="lessons">Lessons</h3>
 
 <p><code>Amir</code> relearned sinusoidal math, the purpose of const in C++, and gained a much deeper understanding of the Project 3 codebase and ray tracing. He also enhanced his project management skills, coordinating different talents, and organizing the logistics of scheduling meetings with 3 busy college students.</p>
 
-<p><code>Quetza</code></p>
-
-<p>I learned how to use blender and how to read/parse dae files. With the information I gained I was able to create new libraries and modify existing code.  I also researched how WiFi signals interacted with different material such as metal which repels WiFi rays. From what I found, I was able to adjust/change the properties of the walls to get a more realistic setting.</p>
+<p><code>Quetza</code> I learned how to use blender and how to read/parse dae files. With the information I gained I was able to create new libraries and modify existing code.  I also researched how WiFi signals interacted with different material such as metal which repels WiFi rays. From what I found, I was able to adjust/change the properties of the walls to get a more realistic setting.</p>
 
 <p><code>Minos</code></p>
 
