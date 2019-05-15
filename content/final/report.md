@@ -3,6 +3,9 @@ title: "Report"
 date: 2019-04-30T22:39:17-07:00
 draft: false
 ---
+
+[Video](https://youtu.be/TxUFy5annY4)
+
 ## Abstract
 
 We modeled radio frequency (RF) rays interacting with realistic materials so users can find the router placement that maximizes WiFi connection at the points where they use it most.  We started by modeling the space where a user would want to compute their wifi. We created a realistic office scene, complete with a couple rooms, desks, wifi-connected devices, and routers. To model RF ray tracing, we began with project 3-2 as a foundation. We decided to introduce two new abstractions to the project, a router and a hotspot. We implemented the router abstraction as a literal router object specified in the blender scene. It shoots RF rays into the scene uniformly at random in the sphere encompassing the router. We implemented hotspots as spheres centered around the device you place in the blender scene. When a ray from the router intersects with one of these special spheres, we record the phase and brightness. Once all the rays have been traced, for each hotspot, we aggregate all the rays which intersected by representing their contribution as `sine(phase) * brightness`. To create a more compelling graphic, we then render the scene from a birds eye view shooting rays from the camera like we did in 3-2 and overlay our computed wifi signal values onto the hotspots.
@@ -10,7 +13,7 @@ We modeled radio frequency (RF) rays interacting with realistic materials so use
 ## Technical approach
 ### Pipeline
 
-![Pipeline](pipeline.png)
+![Pipeline](../img/pipeline.png)
 
 ### Scene modeling (Real life -> .dae)
 
@@ -49,7 +52,8 @@ We ran into two significant challenges in our implementation.
 * A ton of the objects are marked as const in the 3-2 raytracer. Initially this manifested itself as errors that we couldn’t really understand. After learning how const works in C++, we understood what was going on, but it made it very difficult to figure out where to record the phase and brightness values for rays without refactoring major parts of 3-2. This ended up being a frustrating, yet interesting design problem.
 
 #### Summary
-With the router and hotspot objects loaded in from the `.dae`, all we had left was to trace the rays. We generated rays, uniformly at random in the sphere encompassing the router. We modified the BSDFs of each material to scale the rays brightness down by some factor we decided upon after researching the way RF rays interact with that material. In order to measure the reception, we kept track of how many rays intersect each hotspot by storing the state of the wave at a point in time (the phase, which is `time%frequency`(either `2.4 GHZ`or `5GHZ`), and the amplitude (brightness)). We placed light sources under each router so we could use the brightness of the ray as a heuristic for the amplitude of the RF wave. After all the rays are generated, we go through each hotspot and combine these sinusoids using a weighted sum of the rays: sin (phase) * amplitude. With this equation we were able to mimic phase interference and obtain our final value representing the total wifi signal at that hotspot.
+With the router and hotspot objects loaded in from the `.dae`, all we had left was to trace the rays. We generated rays, uniformly at random in the sphere encompassing the router. We modified the BSDFs of each material to scale the rays brightness down by some factor we decided upon after researching the way RF rays interact with that material. In order to measure the reception, we kept track of how many rays intersect each hotspot by storing the state of the wave at a point in time (the phase, which is `time%frequency`(either `2.4 GHZ`or `5 GHZ`), and the amplitude (brightness)). We placed light sources under each router so we could use the brightness of the ray as a heuristic for the amplitude of the RF wave. After all the rays are generated, we go through each hotspot and combine these sinusoids using a weighted sum of the rays
+ `sin(phase) * amplitude`. With this equation we were able to mimic phase interference and obtain our final value representing the total wifi signal at that hotspot.
 
 ### Lessons
 `Amir` relearned sinusoidal math, the purpose of const in C++, and gained a much deeper understanding of the Project 3 codebase and ray tracing. He also enhanced his project management skills, coordinating different talents, and organizing the logistics of scheduling meetings with 3 busy college students.
@@ -61,13 +65,13 @@ When creating and working in blender, it was really cool being able to have a de
 `Minos`
 
 ### Results
-![DiffuseLeftRouter](img/SphereHotSpot_DiffuseLeftRouter_screenshot_5-13_23-3-24.png)
+![DiffuseLeftRouter](../img/SphereHotSpot_DiffuseLeftRouter_screenshot_5-13_23-3-24.png)
 
-![DiffuseRightRouter](img/SphereHotSpot_DiffuseRightRouter_screenshot_5-13_22-5-30.png)
+![DiffuseRightRouter](../img/SphereHotSpot_DiffuseRightRouter_screenshot_5-13_22-5-30.png)
 
-![MixedLeftRouter](img/SphereHotSpot_MixedLeftRouterFix_screenshot_5-14_12-32-3.png)
+![MixedLeftRouter](../img/SphereHotSpot_MixedLeftRouterFix_screenshot_5-14_12-32-3.png)
 
-![MixedRightRouter](img/SphereHotSpot_MixedRightRouterFix_screenshot_5-14_13-19-1.png)
+![MixedRightRouter](../img/SphereHotSpot_MixedRightRouterFix_screenshot_5-14_13-19-1.png)
 
 ### References
 * Reference projects:

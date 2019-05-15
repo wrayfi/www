@@ -24,6 +24,11 @@ pygmentsUseClasses = true
     url = "/milestone/"
     weight = 3
 
+[[menu.main]]
+    name = "Final"
+    url = "/final/"
+    weight = 4
+
 [params]
   google_analytics_id=""
   homepage_button_link = '/project/'

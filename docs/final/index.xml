@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Finals on WrayFi</title>
+    <link>https://wrayfi.github.io/www/final/</link>
+    <description>Recent content in Finals on WrayFi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 30 Apr 2019 22:39:17 -0700</lastBuildDate>
+    
+	<atom:link href="https://wrayfi.github.io/www/final/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Report</title>
+      <link>https://wrayfi.github.io/www/final/report/</link>
+      <pubDate>Tue, 30 Apr 2019 22:39:17 -0700</pubDate>
+      
+      <guid>https://wrayfi.github.io/www/final/report/</guid>
+      <description>Video
+Abstract We modeled radio frequency (RF) rays interacting with realistic materials so users can find the router placement that maximizes WiFi connection at the points where they use it most. We started by modeling the space where a user would want to compute their wifi. We created a realistic office scene, complete with a couple rooms, desks, wifi-connected devices, and routers. To model RF ray tracing, we began with project 3-2 as a foundation.</description>
+    </item>
+    
+  </channel>
+</rss>
