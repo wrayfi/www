@@ -15,25 +15,24 @@ We modeled radio frequency (RF) rays interacting with realistic materials so use
 
 ![Pipeline](../img/pipeline.png)
 
-### Scene modeling (Real life -> .dae)
+### Scene modeling and parsing (Real life -> c++)
 
 The `.dae` files we created in blender contained objects that pathtracer couldn’t read. We found that pathtracer relied heavily on simple objects such as planes and spheres, offering little support for anything else. After experimenting with different materials, we decided to use glass, mirror, and concrete. We then imported compatible .dae files to fill the space. Then, we manually changed variable names and imported material/ effects that were compatible with the XML parser.
 
-### Parsing (.dae -> raytracer)
-
-We changed the collada parser in the project 3 to read in our special router and hotspot objects.
+To go from the `dae` to c++, we changed the collada parser in the project 3 to read in our special router and hotspot objects.
 
 ### Computing Wifi values
 
 #### Problems
 
-We ran into two significant challenges in our implementation.
+We ran into two significant challenges in our implementation: refactoring and const.
 
-* Since we opted to use the staff binary for 3-2 and we needed to modify components of 3-1 to model RF, we had to start by integrating our 3-1 code in with our 3-2 code. Amir’s 3-1 didn’t mesh well with 3-2, but thankfully Quetza’s did so we integrated hers.
-* A ton of the objects are marked as const in the 3-2 raytracer. Initially this manifested itself as errors that we couldn’t really understand. After learning how const works in C++, we understood what was going on, but it made it very difficult to figure out where to record the phase and brightness values for rays without refactoring major parts of 3-2. This ended up being a frustrating, yet interesting design problem.
+We opted to use the staff binary for 3-2 so we needed to modify components of 3-1 to model RF, we had to start by integrating our 3-1 code in with our 3-2 code.
+
+Const is all over the place in the 3-2 raytracer. This made it very difficult to figure out where to record the phase and brightness values for rays without refactoring major parts of 3-2. This ended up being a frustrating, yet interesting design problem.
 
 #### Summary
-With the router and hotspot objects loaded in from the `.dae`, all we had left was to trace the rays. We generated rays, uniformly at random in the sphere encompassing the router. We modified the BSDFs of each material to scale the rays brightness down by some factor we decided upon after researching the way RF rays interact with that material. In order to measure the reception, we kept track of how many rays intersect each hotspot by storing the state of the wave at a point in time (the phase, which is `time%frequency`(either `2.4 GHZ`or `5 GHZ`), and the amplitude (brightness)). We placed light sources under each router so we could use the brightness of the ray as a heuristic for the amplitude of the RF wave. After all the rays are generated, we go through each hotspot and combine these sinusoids using a weighted sum of the rays
+We generated rays, uniformly at random in the sphere encompassing the router. We modified the BSDFs of each material to scale the rays brightness down by some factor that we decided upon after researching the way RF rays interact with that material. We kept track of how many rays intersect each hotspot, storing the state of the wave ( phase, which is `time%frequency`(either `2.4 GHZ`or `5 GHZ`), and amplitude (brightness)). We placed light sources under each router so we could use the brightness of the ray as a heuristic for the amplitude of the RF wave. Then we combine these sinusoids using a weighted sum of the rays
  `sin(phase) * amplitude`. With this equation we were able to mimic phase interference and obtain our final value representing the total wifi signal at that hotspot.
 
 ### Decisions
@@ -46,7 +45,7 @@ Initially, we wanted to create a heat map. We decided to render a birds eye view
  We opted for a more realistic, and doable approach where we compute wifi signal at the hotspots. Unfortunately, no meaningful picture is generated. But, we could compute interference by aggregating all the rays that intersect with our devices. This also captured every router ray that intersected with a hotspot.
  2. What should go into calculating wifi signal and how to aggregate them.
 
-We initially wanted to just include brightness. Every render would produce a heatmap where the brighter points in the picture correspond to better reception.
+We initially wanted to just include brightness. Every render would produce a heat map where the brighter points in the picture correspond to better reception.
 
 We ultimately opted for brightness and phase. This allowed us to capture interference effects where waves can amplify or cancel each other out.
 
